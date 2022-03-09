@@ -1,15 +1,25 @@
 % Case 1: a goal node is found.
+/**
+ * Chooses a node in the `Path` list. 
+ * Then, it checks whether the node is a goal node. 
+ * If it is, the list of nodes is reversed so that the goal node is at the beginning.
+*/
 search(Paths, Solution):-
-	choose([Node|Nodes], Paths, _),
-	goal(Node),
-	reverse([Node|Nodes], Solution).
+	choose([Node|Nodes], Paths, _), % Choose a node in the list of paths.
+	goal(Node), % Check whether the node is a goal node.
+	reverse([Node|Nodes], Solution). % Reverse the list of nodes so that the goal node is at the beginning.
 
 % Case 2: carry on searching.
+/**
+ * Chooses a node in the `Path` list. 
+ * It then uses `findall` to find all the nodes in the path that can be expanded. 
+ * It combines the expansions into a new path and then searches for the new path in the `Solution` list.
+*/
 search(Paths, Solution):-
-	choose(Path, Paths, RestOfPaths),
-	findall([NewNode|Path], expands(Path, NewNode), Expansions),
-	combine(Expansions, RestOfPaths, NewPaths),
-	search(NewPaths, Solution).
+	choose(Path, Paths, RestOfPaths), % Choose a node in the list of paths.
+	findall([NewNode|Path], expands(Path, NewNode), Expansions), % Find all the nodes in the path that can be expanded.
+	combine(Expansions, RestOfPaths, NewPaths), % Combine the expansions into a new list of paths.
+	search(NewPaths, Solution). % Search for the new list of paths.
 
 /*
  expands(+Path, ?NewNode).
@@ -20,7 +30,7 @@ search(Paths, Solution):-
     as there is an link to it from where we are currently.
 */
 expands([Node|_], NewNode):-
-	arc(Node, NewNode).
+	arc(Node, NewNode). % Check whether there is an arc from the current node to the new node.
 
 /**
  * Finds all possible paths from A to E, using the `choose/3` predicate.
@@ -28,7 +38,7 @@ expands([Node|_], NewNode):-
  * Otherwise, the path consisting of the remaining options is returned.
 */
 choose([A|B],[[C|D]|E], RestOfPaths):-
-	A=C, 
+	A=C, % If A = C, then B = D, and E is returned.
 	B=D, 
 	RestOfPaths = E.
 
@@ -37,7 +47,7 @@ choose([A|B],[[C|D]|E], RestOfPaths):-
  * This creates a Breadth First Search.
 */
 combine(Expansions, RestOfPaths, NewPaths):-
-	append(Expansions, RestOfPaths, NewPaths).
+	append(Expansions, RestOfPaths, NewPaths). % Combine the expansions into a new list of paths.
 
 /* Representation of a tree */
 /* choose initial state a   */

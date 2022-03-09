@@ -28,19 +28,18 @@ CS2910 Assignment 1
  * where [[a]] represents the root of the tree above (initial state of search).
 */
 
-
 % Case 1: a goal node is found.
 search(Paths, Solution):-
-	choose([Node|Nodes], Paths, _),
-	goal(Node),
+	choose([Node|Nodes], Paths, _), % Choose the first path in the list of paths.
+	goal(Node), % Check if the node is the goal node.
 	reverse([Node|Nodes], Solution, []).  % Reverse the path to get the correct order. List is checked for duplicates.
 
 % Case 2: carry on searching.
 search(Paths, Solution):-
-	choose(Path, Paths, RestOfPaths),
-	findall([NewNode|Path], expands(Path, NewNode), Expansions),
-	combine(Expansions, RestOfPaths, NewPaths),
-	search(NewPaths, Solution).
+	choose(Path, Paths, RestOfPaths), % Choose the first path in the list of paths.
+	findall([NewNode|Path], expands(Path, NewNode), Expansions), % Expand the chosen path.
+	combine(Expansions, RestOfPaths, NewPaths), % Combine the new paths with the rest of the paths.
+	search(NewPaths, Solution). % Call search again with the new paths.
 
 /**
  *  * expands(+Path, ?NewNode).
@@ -52,7 +51,7 @@ search(Paths, Solution):-
 */
 
 expands([Node|_], NewNode):-
-	arc(Node, NewNode).
+	arc(Node, NewNode). 
 
 /**
  *  * *Predicates to define in separate files for breadth_first and depth_first*
@@ -85,4 +84,18 @@ combine(Expansions, RestOfPaths, NewPaths):-
 
 % NEED TO DEFINE THIS PREDICATE YOURSELVES FOR TASK 1 OF COURSEWORK.
 combine(Expansions, RestOfPaths, NewPaths):-
-	append(Expansions, RestOfPaths, NewPaths).
+	append(Expansions, RestOfPaths, NewPaths). % Append the two lists.
+
+
+arc(a, b).
+arc(a, f).
+arc(b, c).
+arc(b, d).
+arc(b, e).
+arc(f, g).
+arc(f, i).
+arc(i, j).
+arc(i, k).
+
+/* the goal */
+goal(i).
