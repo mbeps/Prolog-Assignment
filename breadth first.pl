@@ -34,6 +34,7 @@ choose([A|B],[[C|D]|E], RestOfPaths):-
 
 /**
  * Combines 2 list into one list, `Expansion` and `RestOfPaths` are combined into `NewPaths`.
+ * This creates a Breadth First Search.
 */
 combine(Expansions, RestOfPaths, NewPaths):-
 	append(Expansions, RestOfPaths, NewPaths).

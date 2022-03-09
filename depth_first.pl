@@ -33,7 +33,8 @@ choose([A|B],[[C|D]|E], RestOfPaths):-
 	RestOfPaths = E.
 
 /*
-	Combines 2 list into one list, `RestOfPaths` and `NewPaths` are combined into `Expansions`.
+ * Combines 2 list into one list, `RestOfPaths` and `NewPaths` are combined into `Expansions`.
+ * This creates a Depth-First Search.
 */
 combine(Expansions, RestOfPaths, NewPaths):-
 	append(RestOfPaths, NewPaths, Expansions).
