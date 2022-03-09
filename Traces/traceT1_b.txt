@@ -1,0 +1,38 @@
+$ swipl tree_search.pl depth_first.pl Tests/test1.pl 
+Welcome to SWI-Prolog (threaded, 64 bits, version 7.5.15)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit http://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- trace.
+true.
+
+[trace]  ?- search([[a]], X).
+   Call: (8) search([[a]], _8888) ? creep
+   Call: (9) choose([_9104|_9106], [[a]], _9128) ? skip
+   Exit: (9) choose([a], [[a]], []) ? creep
+   Call: (9) goal(a) ? creep
+   Fail: (9) goal(a) ? creep
+   Redo: (8) search([[a]], _8888) ? creep
+   Call: (9) choose(_9118, [[a]], _9122) ? skip
+   Exit: (9) choose([a], [[a]], []) ? creep
+^  Call: (9) findall([_9104, a], expands([a], _9104), _9134) ? skip
+^  Exit: (9) findall([_9104, a], user:expands([a], _9104), [[b, a], [f, a]]) ? creep
+   Call: (9) combine([[b, a], [f, a]], [], _9204) ? skip
+   Exit: (9) combine([[b, a], [f, a]], [], [[b, a], [f, a]]) ? creep
+   Call: (9) search([[b, a], [f, a]], _8888) ? creep
+   Call: (10) choose([_9198|_9200], [[b, a], [f, a]], _9222) ? skip
+   Exit: (10) choose([b, a], [[b, a], [f, a]], [[f, a]]) ? creep
+   Call: (10) goal(b) ? creep
+   Fail: (10) goal(b) ? creep
+   Redo: (9) search([[b, a], [f, a]], _8888) ? creep
+   Call: (10) choose(_9212, [[b, a], [f, a]], _9216) ? skip
+   Exit: (10) choose([b, a], [[b, a], [f, a]], [[f, a]]) ? creep
+^  Call: (10) findall([_9198, b, a], expands([b, a], _9198), _9228) ? skip
+^  Exit: (10) findall([_9198, b, a], user:expands([b, a], _9198), [[c, b, a], [d, b, a], [e, b, a]]) ? creep
+   Call: (10) combine([[c, b, a], [d, b, a], [e, b, a]], [[f, a]], _9334) ? skip
+   Exit: (10) combine([[c, b, a], [d, b, a], [e, b, a]], [[f, a]], [[c, b, a], [d, b, a], [e, b, a], [f, a]]) ? creep
+   Call: (10) search([[c, b, a], [d, b, a], [e, b, a], [f, a]], _8888) ? creep
+   ......
