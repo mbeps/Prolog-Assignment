@@ -86,7 +86,7 @@ combine(Expansions, RestOfPaths, NewPaths):-
 combine(Expansions, RestOfPaths, NewPaths):-
 	append(Expansions, RestOfPaths, NewPaths). % Append the two lists.
 
-
+% DATA
 arc(a, b).
 arc(a, f).
 arc(b, c).
@@ -97,5 +97,5 @@ arc(f, i).
 arc(i, j).
 arc(i, k).
 
-/* the goal */
+% GOAL
 goal(i).

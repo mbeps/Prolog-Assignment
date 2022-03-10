@@ -49,8 +49,7 @@ choose([A|B],[[C|D]|E], RestOfPaths):-
 combine(Expansions, RestOfPaths, NewPaths):-
 	append(RestOfPaths, NewPaths, Expansions). % Combine the lists.
 
-/* Representation of a tree */
-/* choose initial state a   */
+% DATA
 arc(a, b).
 arc(a, f).
 arc(b, c).
@@ -61,5 +60,5 @@ arc(f, i).
 arc(i, j).
 arc(i, k).
 
-/* the goal */
+% GOAL
 goal(i).
