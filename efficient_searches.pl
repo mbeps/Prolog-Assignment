@@ -52,3 +52,22 @@ dldfs_helper(Path, D, Visited, Solution) :-
     append(Path, [Node], NewPath), % Add the node to the path
     NewD is D - 1, % Decrement the distance
     dldfs_helper(NewPath, NewD, [Node|Visited], Solution). % Call dldfs_helper with the new path and the new distance
+
+% Question C
+/**
+ * The code above finds a path from a given starting point to a given destination, and records the path in a history list. 
+ * If the destination is reached, the code also prints a solution.
+*/
+idsh(Path, D, History, Solution) :-
+    dldfs(Path, D, Solution), % Call dldfs with the path and the depth
+    \+ member(Solution, History). % Check if the solution is not in the history list
+
+/**
+ * Finds a solution to the shortest path problem, given a path and a distance to the goal. 
+ * If the distance to the goal is less than the maximum distance, the function finds a new solution by adding one step to the path and recursively calling the function. 
+ * If the distance to the goal is greater than the maximum distance, the function returns the last solution in the history list.
+*/
+idsh(Path, D, History, Solution) :-
+    D < Max, % Check if the distance is less than the maximum distance
+    D1 is D + 1, % Increment the distance
+    idsh(Path, D1, [Solution|History], Solution). % Call idsh with the path, the new distance, and the solution and the history list
