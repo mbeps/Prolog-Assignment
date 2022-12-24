@@ -1,16 +1,16 @@
 # CS2910 Assessed Coursework 2
-> This assignmentmust be submittedby 16:00 on the 4th of March 2022.
+> This assignment must be submitted by 16:00 on the 4th of March 2022.
 > 
 > Feedback will be provided by 1st April 2022.
 
-## 1 Learning outcomes assessed
+## 1 - Learning outcomes assessed
 
 This assignment covers some of the algorithms we covered onuninformed search. In particular, the outcomes assessed are:
 - knowledge and understanding of uninformed search strategies such as breadth-first, depth-firstanditerative-deepening;
 - application of uninformed search strategies to search both trees and graphs;
 - implementation of uninformed search strategies in Prolog.
 
-## 2 Instructions
+## 2 - Instructions
 You will need to submit this coursework via Moodle. Log onto the course page a week before the deadline and you will find the relevant link for the final submission of this assignment.
 Click on that link and follow the instructions accordingly. Your submission should be in a single .zip file compressing a directory that contains the following Prolog files only (see detailed assignment specification later in Section 4):
 - `breadthfirst.pl`;
@@ -22,7 +22,7 @@ Submission after the deadline will be accepted but it will automatically be reco
 ### NOTE:
 > All the work you submit should be solely your own work. Coursework submissions are routinely checked for this. Any assessment offence will be investigated subject to the College regulations.
 
-## 3 An Uninformed Search template in Prolog
+## 3 -  An Uninformed Search template in Prolog
 This assignment is based on extending and/or modifying the contents of file `treesearch.pl`, which corresponds to the Prolog implementation of the basic tree search algorithm on slide 5 of uninformed search topic. Download this Prolog file from Moodle and store it in your working directory for this assignment. Its contents are shown for convenience below:
 
 ```
@@ -47,7 +47,7 @@ The following directories inMoodleare useful resources to this assignment.
 - `Tests` – Provides four files that you can use to test the search strategies you will be developing. You may find it useful to draw on paper the trees/graphs represented by the contents of these files, so that you can verify the solutions your programs find.
 - `Outputs`– Gives examples of what output we expect your programs to produce, when you are running different strategies on the different test files. It is importantto ensure your solutions generate exactly the same output as shown in the files contained in this directory, as this will help us automatically test your programs.
 
-## 4 Tasks for this assignment
+## 4 - Tasks for this assignment
 ### T1. From Tree Search to Graph Search `thetreesearch.pl` program you have downloaded as a template for searching.
 Different strategies can be defined either by specifying appropriately the predicates `choose/3` and `combine/3` (which are currently undefined), and by constraining the way nodes get expanded.
 - (a) Implement the breadth-firstsearch strategy for trees by appropriately defining `choose/3` and `combine/3` in a file called `breadthfirst.pl`. [10%]
